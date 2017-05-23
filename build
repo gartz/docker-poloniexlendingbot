@@ -4,6 +4,8 @@ PROJECT_MAINTAINER=gartz
 PROJECT_NAME=poloniexlendingbot
 
 docker build \
+    --force-rm \
+    --no-cache \
     -t $PROJECT_MAINTAINER/$PROJECT_NAME:$(echo $1 | cut -d. -f1,2,3)$(git symbolic-ref --short HEAD | awk '{if($1 !=\"master\") print \"-\"$1}') \
     -t $PROJECT_MAINTAINER/$PROJECT_NAME:$(echo $1 | cut -d. -f1,2)$(git symbolic-ref --short HEAD | awk '{if($1 !=\"master\") print \"-\"$1}') \
     -t $PROJECT_MAINTAINER/$PROJECT_NAME:$(echo $1 | cut -d. -f1)$(git symbolic-ref --short HEAD | awk '{if($1 !=\"master\") print \"-\"$1}') \
